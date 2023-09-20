@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM Class 2</title>
+</head>
+<body>
+    <!-- Browser Events -->
+    <!-- these are the invissible events which occur as we scroll the web page 
+        we can see the events happening on a page by monitorEvent(Document) statement in console #tried and tested
+    -->
+    <!-- Event Target -->
+        <!-- The EventTarget interface is implemented by objects that can receive events and may have listeners for them. In other words, any target of events implements the three methods associated with this interface.
+        basically it is an interface implemented by objects that can recieve events and may have listeners for them, it has 3 methods-
+            1) addEventListener()
+                used to respond to an event
+                pseudo code:-
+                    <event_taget>.addEventListener(<event type>,<function to perform>);
+                        ex- content.addEventListener('click',function() {
+                            content.style.backgroundColor = 'red';
+                            });
+            2) removeEventListener()
+                used to remove event
+                it can only be used to remove only and only if it has ;-
+                    1) same type as event which we want to remove
+                    2) same target as event which we want to remove
+                    3) same function  as event which we want to remove (#can be implemented by      using function names insted of using functions directly as if we dont give them names then they will be stored at different memory locations and we will became unable to remove event function)
+            3) dispatchEvent()
+
+    -->
+    <!-- Node
+        it is inherited from event target and has all properties and methods of event target
+    -->
+    <!-- Element
+        it is inherited from Node and has all properties and methods of event target and node.
+    -->
+    <!--
+        Phases of an event
+        There are three different phases during the lifecycle of a JavaScript event.
+
+            Capturing Phase
+            1.Target Phase
+            2.Bubbling Phase
+            3.They follow the same order as listed above.
+
+            Capturing Phase is when the event goes down to the element. The target phase is when the event reaches the element and the Bubbling phase is when the event bubbles up from the element.
+
+            in general addeventlistener(): works for bubbling phase but if we add true like
+            content.addEventListener('click',function() {-----},true);
+            then it will work in capturing phase.
+    -->
+
+    <!-- prevent default tag
+        this tag is used to stop the default action of any object, for example if we add this tag to an anchor tag then it will no open the desired link
+        it can be used as
+        let a1= document.queryselect('a');
+        a1.addEventListener('click',function(event){
+            console.log("clicked");
+            a1.preventDefault();              
+        });
+        parameter event contains all the events related to the object and if we print this parameter all the events will show up
+        note  that - only name event is given for reference and we can use any name to the parameter and it will work same
+    -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class 3</title>
+</head>
+<body>
+    <script>
+        // precision now
+        // The performance.now() method returns a high resolution timestamp in milliseconds. It represents the time elapsed since Performance.timeOrigin (the time when navigation has started in window contexts)
+        let t1= performance.now();
+        for(let i =1;i<1000;i++){
+            let element=document.createElement('p');
+            element.textContent='hi this is para '+i;
+
+            document.body.appendChild(element);
+        }
+        let t2=performance.now();
+        console.log(`time taken ${t2 - t1} ms`);  //time taken 22.599999994039536 ms
+
+        // now checking the time taken using fragment method, here we first create a document fragment and append paragraphs in it, in first method we have taken 1000 reflow and 1000 repaint, but in fragment method we take 1 reflow and 1 repaint
+        let t3= performance.now();
+        let fragment=document.createDocumentFragment('fragment');
+        for(let i =1;i<1000;i++){
+            let element=document.createElement('p');
+            element.textContent='hi this is para '+i;
+
+            fragment.appendChild(element);
+        }
+        document.body.appendChild(fragment);
+        let t4=performance.now();
+        console.log(`time taken ${t4 - t3} ms`);//time taken 5.600000023841858 ms
+
+
+        // js is a single threaded language, i.e it process single thread at a time
+
+        // Event loop: An event loop is something that pulls stuff out of the queue and places it onto the function execution stack whenever the function stack becomes empty.
+            // 1. control stack: stack containing information about functions in processing
+            // 2. browser
+            // 3. function queue: this queue stores asynchronous function which  will be processed at a specific event and functions of this queue will only be processed when stack becomes empty
+
+        // setTimeOut():
+        // this function is used so that function is performed after a minimum amount of time given in this function.
+        // for ex;
+        // setTimeout(()=>{console.log("hello")},700)   // setTimeout() method takes two arguments first one is callback function and second argument is minimum delay
+        // if minimum delay time is completed and call stack is not empty then function queue will for call stack to get empty to perform its function
+
+        // read more about setTimeOut() #imp
+    </script>
+</body>
+</html>

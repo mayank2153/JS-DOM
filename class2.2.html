@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append many childs</title>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            // whole script function
+        });
+    </script> -->
+</head>
+<body>
+    <article  id="wrapper">
+        <p>para par click kia h<span>span pr click kiya h tune</span></p>
+        <p>para par click kia h<span>span pr click kiya h tune</span></p>
+        <p>para par click kia h<span>span pr click kiya h tune</span></p>
+    </article>
+
+    <script>
+        // let myDiv = document.createElement('div');
+        // for(let i =1;i<100;i++){
+        //     let newPara= document.createElement('p');
+        //     newPara.textContent = 'hello bachooo '+i;
+
+        //     newPara.addEventListener('click',function(){
+        //         console.log('shut up')
+        //         });
+        //     myDiv.appendChild(newPara);
+        // }
+        // document.body.appendChild(myDiv);
+        // optimising above code-----
+        // ---------------------------------------------------------
+            
+        let myDiv = document.createElement('div');
+        function paraStatus(){
+            console.log("clicked " + event.target.textContent); 
+        };
+        myDiv.addEventListener('click',paraStatus);
+        for(let i =1;i<100;i++){
+            let newPara= document.createElement('p');
+            newPara.textContent = 'hello bachooo '+ i;
+            
+            myDiv.appendChild(newPara);
+        }
+        document.body.appendChild(myDiv);
+        // in  above code we have used event target property by which we are able to print the text content of p tag uniquely or when we click on div then whole  text content of div is displayed.
+
+
+
+        // another example of event target property 
+        // see body
+
+        // we want console to only print when console is clicked , so
+        let abc= document.querySelector('#wrapper');
+            abc.addEventListener('click',function(event){
+                if(event.target.nodeName==='SPAN'){
+                    console.log("clicked" + event.target.textContent);
+                }
+                
+            } ); //but this method had a drawback that when we clicked  on para, content of span was also displayed, so to prevent this we had used filter through nodename(talking about previous method where we have not used nodename)
+
+        // the best practise to use script tag is using it at the last in body, but if we want ot use script tag inside head tag, we can do it by the property of DONContentLoaded(), it means that whole content of webpage is loaded, an example of it is shown under hhead tag
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         What is Synchronous Code?
+//         When we write a program in JavaScript, it executes line by line. When a line is          completely executed, then and then only does the code move forward to execute the next line.
+
+//         Let's look at an example of this:
+        // function test(){
+        //     console.log("Hello");
+        // }
+        // test();
+        // console.log("kya haalchaal?")
+
+
+//         What is Asynchronous Code?
+// With asynchronous code, multiple tasks can execute at the same time while tasks in the background finish. This is what we call non-blocking code. The execution of other code won't stop while an asynchronous task finishes its work.
+
+// Let's see an example of asynchronous code:
+        // setTimeout(function() {
+        //     console.log("first");
+        // },3000);                         output;-
+        // function test(){                 second;thurd;first(timeout func)
+        //     console.log("second");
+        // }
+        // test();
+        // console.log("third");
+
+
+
+
+
+
+        //API:
+        /*  The API (Application Programming Interface or Application Programmer’s Interface )is a set of routines, protocols and tools for building software applications.
+        
+        Promise:
+        The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+        example-
+        */
+    //    for resolve:-
+    //    let meraPromise=new Promise(function(resolve,reject){
+    //     setTimeout(function(){
+    //         console.log('I am inside promise');
+    //         resolve(4545);
+    //    },5000);});
+    //    console.log('hum first hum first');
+    //    output:
+            // hum first hum first
+            // I am inside promise
+            //  meraPromise
+            // Promise {<fulfilled>: 4545}
+            // [[Prototype]]: Promise[[PromiseState]]: "fulfilled"[[PromiseResult]]: 4545
+
+        // for reject:-
+    //     let meraPromise=new Promise(function(resolve,reject){
+    //     setTimeout(function(){
+    //         console.log('I am inside promise');
+    //         reject("error aagyi hai bhai bht bhayankar");
+    //     },5000);});
+    //    console.log('hum first hum first');
+    //    output:
+       
+            // hum first hum first
+            // I am inside promise
+    //        class4.html:62 Uncaught (in promise) error aagyi hai bhai bht bhayankar
+
+
+    // then and catch method
+    // then is used after promise is resolved, whereas, catch is used when promise rejectes
+    // let mp = new Promise(function(resolve, reject){
+    //     setTimeout(()=>{console.log('using then')},1000);
+    //     // resolve(123456789);
+    //     reject("errororororor");
+    // });
+    // mp.catch(function(){
+    //     console.log("error aagyi yyaaaarrrrr");
+    // });
+
+    // if many promises are independent, like  one instruction will only work if other instruction gets executed(example of promise)
+    // let p1=new Promise(function(resolve, reject){
+    //     setTimeout(function(){
+    //         console.log("p1 executed")
+    //     },2000);
+    //     resolve(true);
+    // });
+    // let output = p1.then(function(){
+    //     let p2=new Promise(function(resolve, reject){
+    //         console.log("p2 executed");
+    //         resolve(true);
+    //     });
+    // });
+    // output.then(function(){
+    //     console.log("shayad hogya")
+    // })
+
+        // now let we want to work with  500 promises, so how do we manage it, we use  'async-await' for that, async and await make promises easier to write "async makes a function return a Promise await makes a function wait for a Promise
+        
+        // async function hello(){
+        //     return "hello";
+        // }
+        // console.log(hello());
+        // this function returns a promise with result value "hello";
+
+        // now we will work with many promises in a single time
+        // async function utility(){
+        //     let delhiMausam = new Promise(function(resolve, reject){
+        //         setTimeout((function(){
+        //             resolve("delhi is hot");
+        //         }),5000)
+                
+        //     });
+        //     let hydMausam=new Promise(function(resolve, reject){
+        //         setTimeout((function(){
+        //             resolve("hyderabad is cool");
+        //         }),1000);
+        //     });
+
+        //     return [delhiMausam,hydMausam];
+
+        // }
+        // console.log(utility());
+
+        // in this function, both promises work simultaneously and in total of 5s both results gets printed.
+
+
+        // await :-
+        // async function utility(){
+        //     let delhiMausam = new Promise(function(resolve, reject){
+        //         setTimeout((function(){
+        //             console.log("1");
+        //             resolve("delhi is hot");
+        //         }),5000)
+                
+        //     });
+        //     let hydMausam=new Promise(function(resolve, reject){
+        //         setTimeout((function(){
+                    
+        //             console.log("2");
+        //             resolve("hyderabad is cool");
+        //         }),1000);
+        //     });
+
+
+        //     console.log("fetching delhi weather");
+        //     let dm= await delhiMausam;
+        //     console.log("delhi ka taapmaan: "+ dm);
+        //     console.log("fetching hyderabad weather");
+        //     let hm= await hydMausam;
+            
+        //     console.log("hyderabad ka taapmaan: "+ hm);
+            
+        //     // in this function hm will not get exexuted until dm gets executed, means that hm will wait for dm to get executed first;
+        //     return [dm,hm];
+
+        // }
+        // console.log("welcome to weather control room");
+        // utility();
+        // let a = utility();
+
+
+        // Fetch API-
+        // The fetch() method starts the process of fetching a resource from a server.
+        // The fetch() method returns a Promise that resolves to a Response object.
+
+        // async function utility(){
+        //     let content = await fetch('https://jsonplaceholder.typicode.com/posts/1')  ;
+        //     let output = await content.json();
+        //     console.log(output);
+        // }
+        // utility();
+        // it gives output as a promise and displays all the content of the link
+        // the above example is of how to get info
+
+        // also we can give fetch instruction as :
+        // fetch("URL",{options});
+        // options can include extra information like id passwords for accessing the URL
+
+        // if we are not using options in fetch call then fetch call will be always for getting data
+
+
+
+        // Send API
+
+        async function helper(){
+            let options={
+                method: 'POST',
+                body: JSON.stringify({
+                    name: 'MAYANK',
+                    body: 'TAGDI',
+                    userId: 2003,
+                }),
+                headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+                },
+            }
+            let content = await fetch('https://jsonplaceholder.typicode.com/posts',options);
+            let response = await content.json();
+            console.log(response);
+        }
+        async function utility(){
+            let a = await helper();
+            console.log(a);
+        }
+        utility();
+
+        // The above function is a example of send api and it will give output of options body in console
+
+        // closure:
+        // A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+        // example;
+        // function init() {
+        //     var name = "Mozilla"; // name is a local variable created by init
+        //     function displayName() {
+        //       // displayName() is the inner function, that forms the closure
+        //       console.log(name); // use variable declared in the parent function
+        //     }
+        //     displayName();
+        // }
+        // init();
+        let abss=767;
+        function abs(){
+            let abss=6;
+            console.log(abss);
+        }
+        abs();
+        console.log("abs",abss);
+
+
+        
+    </script>
+</body>
+</html>

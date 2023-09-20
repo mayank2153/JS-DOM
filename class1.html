@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Window
+    1. it is a top level entity,
+    2. it is a global object which is created by browser
+    3. it represents browser window
+    4. it consists of-
+        a. DOM(document object model)
+        b. BOM(browser object model)
+        c. JS Core
+    DOM=> The Document Object Model (DOM) is a programming interface for web documents. It allows programs to       create, change, or remove elements from a document. The DOM connects web pages to scripts or programming languages. Usually, it refers to JavaScript.
+    DOM has a tree like structure.
+    BOM=>The Browser Object Model (BOM) is a cross-browser programming interface that provides a way for JavaScript programs to interact with the various parts of a web browser. The BOM consists of a number of objects that represent the different parts of the browser, such as the window, the document, and the history.
+    The BOM is important because it allows JavaScript programs to control the browser and interact with the web page. For example, a JavaScript program can use the BOM to open a new window, navigate to a new web page, or print the current web page.
+ -->
+
+
+
+<!-- used this functions in inspect -->
+
+ <!-- getElementById()-
+    The getElementById() method of the Document interface returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly.    
+    it is  used as document.getElementById('Id name')
+    and returns a single object
+-->
+<!-- getElementsByClassName()-
+    The getElementsByClassName method of Document interface returns an array-like object of all child elements which have all of the given class name(s).
+
+    When called on the document object, the complete document is searched, including the root node. You may also call getElementsByClassName() on any element; it will return only elements which are descendants of the specified root element with the given class name(s)
+
+    it is used as document.getElementsByClassName('class name')
+    it can return all objects having same class in an array like format called HTMLCollection.
+-->
+
+<!-- other methods to access document objects-
+    1. getElementsByTagName()-
+        it is same as  getElementsByClassName() but instead it searches by tags like <p> or <h1> instead of class names and also return html collection
+    2. $0 method
+        this method allows to access objects of document by selecting object in inspect and writing $0 in console.
+    3. query selector method- 
+        this method allows us to search objects through tag name or id name or class name
+        it returns a single object, if there are multiple objects then it return first object
+    4. queryselectorall()-
+        same as query selector but it returns all matching objects
+-->
+
+<!-- updating existing webpages-
+    4 methods-
+    1.innerHTML
+    2.outerHTML
+    3. textContent
+    4.innerText
+
+    in these methods basically we select an object and get or set it-
+        for html we use 1 and 2
+        for text we use 3 and 4
+    the difference between text content and inner text is that innertext does not  show text whose display is set to hidden and textcontent shows all text irrespective of display type
+
+    and the diff between innerhtml and text content is that innerhtml renders tag before display and text content reads tags as text
+-->
+
+
+<!-- 
+    adding new elements using js
+    it can be done by using create and appendchild method
+
+    steps-
+    1.let content=document.querySelector('') #select object where to add element
+    2. create element-
+        let newhead=document.createElement('h1')
+    3. add element inside object
+        content.appendChild(newhead)
+    4. we can also add text in new head by setting its text content 
+ -->
+ <!-- 
+    there is a drawback of appendchild that it add elements only at last position,but we can add elements at specified position using insertadjacentHTML()-
+    
+    
+    The insertAdjacentHTML() method of the Element interface parses the specified text as HTML or XML and inserts the resulting nodes into the DOM tree at a specified position.
+    syntax-
+        insertAdjacentHTML(position, text)
+    position- 
+        "beforebegin"
+            Before the element. Only valid if the element is in the DOM tree and has a parent element.
+
+        "afterbegin"
+            Just inside the element, before its first child.
+
+        "beforeend"
+            Just inside the element, after its last child.
+
+        "afterend"
+            After the element. Only valid if the element is in t
+            he DOM tree and has a parent element.
+
+    text-
+        text to add
+  -->
+  <!-- 
+    similarly we can remove child from object using removechild(childname)
+    parentNode.removeChild(childNode);
+
+   -->
+   <!-- STYLING(CSS) USING JAVASCRIPT -->       
+   <!-- 
+        1)  ex.  content.style.backgroundColor='white';
+        this method is used to change 1 property at at time
+        2) cssText
+            this method allow us to change several properties at a time
+            content.style.cssText='color:red; backgroundColor:yellow: size:5em';
+        3) set attribute
+        The setAttribute() method sets a new value to an attribute.
+        a.setAttribute('style','background-color:blue','font-size:1em');
+        #it can also be used to change various other things as well
+        4) className and 5) classList
+        both are used to display class of the selected object the difference is that className returns a string which consists of all the classes of the object where as classList returns all the classes stored in array
+        these methods are used to add or remove classes from an object
+    -->
+</body>
+</html>
